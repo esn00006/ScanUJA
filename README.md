@@ -461,9 +461,9 @@ Este formato permite crear una asignatura e importar todos sus alumnos de una so
 ```csv
 Curso - Código - Nombre de la Asignatura (Todo incluido en la misma celda)
     DNI;Apellido1;Apellido2;Nombre;Correo
-    NIF - 12345678A;García;López;María;garcia.lopez@red.ujaen.es
-    NIF - 23456789B;Martínez;Sánchez;Carlos;martinez.sanchez@red.ujaen.es
-    NIF - 34567890C;Rodríguez;Pérez;Juan;rodriguez.perez@red.ujaen.es
+    12345678A;García;López;María;garcia.lopez@red.ujaen.es
+    23456789B;Martínez;Sánchez;Carlos;martinez.sanchez@red.ujaen.es
+    34567890C;Rodríguez;Pérez;Juan;rodriguez.perez@red.ujaen.es
 ```
 
 #### **Explicación detallada:**
@@ -492,48 +492,42 @@ Debe incluir los datos omitiendo la primera columna, es decir, **comenzando desd
 
 | Columna       | Descripción                  | Ejemplo                     | Obligatorio |
 |---------------|------------------------------|-----------------------------|-------------|
-| **DNI**       | DNI/NIE del alumno           | `NIF - 12345678A`           | ✅ Sí        |
+| **DNI**       | DNI/NIE del alumno           | `12345678A`                 | ✅ Sí        |
 | **Apellido1** | Primer apellido              | `García`                    | ✅ Sí        |
 | **Apellido2** | Segundo apellido             | `López`                     | ❌ No        |
 | **Nombre**    | Nombre                       | `María`                     | ✅ Sí        |
 | **Correo**    | Email institucional completo | `garcia.lopez@red.ujaen.es` | ✅ Sí        |
 
 #### **Ejemplo completo (Excel - delimitador `;`):**
-![img.png](img.png)
-```
+
+```csv
 2425 - 12345678 - Matemáticas I
     DNI;Apellido1;Apellido2;Nombre;Correo
-    NIF - 12345678A;García;López;María;garcia.lopez@red.ujaen.es
-    NIF - 23456789B;Martínez;Sánchez;Carlos;martinez.sanchez@red.ujaen.es
-    NIF - 34567890C;Rodríguez;Pérez;Juan;rodriguez.perez@red.ujaen.es
+    12345678A;García;López;María;garcia.lopez@red.ujaen.es
+    23456789B;Martínez;Sánchez;Carlos;martinez.sanchez@red.ujaen.es
+    34567890C;Rodríguez;Pérez;Juan;rodriguez.perez@red.ujaen.es
 ```
-
-**⚠️ Formato del archivo:** Recuerde que la aplicación utiliza archivos CSV con codificación UTF-8. Guarde los ficheros con dicho formato para evitar problemas de lectura.
-![img_3.png](img_3.png)
 
 #### **Ejemplo completo (Google Sheets - delimitador `,`):**
-![img_1.png](img_1.png)
-```
+
+```csv
 2425 - 12345678 - Matemáticas I
     DNI,Apellido1,Apellido2,Correo
-    NIF - 12345678A,García,López,María,garcia.lopez@red.ujaen.es
-    NIF - 23456789B,Martínez,Sánchez,Carlos,martinez.sanchez@red.ujaen.es
-    NIF - 34567890C,Rodríguez,Pérez,Juan,rodriguez.perez@red.ujaen.es
+    12345678A,García,López,María,garcia.lopez@red.ujaen.es
+    23456789B,Martínez,Sánchez,Carlos,martinez.sanchez@red.ujaen.es
+    34567890C,Rodríguez,Pérez,Juan,rodriguez.perez@red.ujaen.es
 ```
 
-**⚠️ Formato del archivo:** En Google Sheets se exportan los CSV con codificación UTF-8 por defecto, por lo que no es necesario realizar ningún ajuste adicional.
 #### **⚠️ Errores comunes:**
 
-| ❌ Error                               | ✅ Solución                                                                                                                                                                                                   |
-|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Falta el guion `-` en la primera fila | Use exactamente: `Curso - Código - Nombre`                                                                                                                                                                   |
-| Formato de curso incorrecto           | Recuerde que el formato de curso contiene 4 números. No incluya años completos, sino las dos últimas cifras de cada uno. Para el curso 2024 - 2025 se debe indicar 2425                                      |
-| Formato de DNI incorrecto             | Recuerde que el formato de DNI de los alumnos sigue la estructura 'NIF - 12345678A'                                                                                                                          |
-| DNI duplicado                         | Cada alumno debe tener un DNI único                                                                                                                                                                          |
-| Formato de email incorrecto           | Use el formato completo: `nombre@red.ujaen.es`                                                                                                                                                               |
-| Columnas en orden incorrecto          | Respete el orden definido: DNI, Apellido1, Apellido2,Nombre,Correo                                                                                                                                           |
-| Líneas en blanco entre alumnos        | Elimine todas las líneas vacías                                                                                                                                                                              |
-| Formato de fichero incorrecto         | La aplicación solamente detectará archivos con extensión .csv y codificación UTF-8. Compruebe que no hay datos obligatorios vacíos y que está siguiendo correctamente las indicaciones previamente descritas |
+| ❌ Error                               | ✅ Solución                                                                                                               |
+|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| Falta el guion `-` en la primera fila | Use exactamente: `Curso - Código - Nombre`                                                                               |
+| DNI duplicado                         | Cada alumno debe tener un DNI único                                                                                      |
+| Formato de email incorrecto           | Use el formato completo: `nombre@red.ujaen.es`                                                                           |
+| Columnas en orden incorrecto          | Respete el orden definido: DNI, Apellido1, Apellido2,Nombre,Correo                                                       |
+| Líneas en blanco entre alumnos        | Elimine todas las líneas vacías                                                                                          |
+| Formato de fichero incorrecto         | Compruebe que no hay datos obligatorios vacíos y que está siguiendo correctamente las indicaciones previamente descritas |
 
 ---
 
@@ -682,7 +676,8 @@ Nota = (√(Puntuación del alumno) / √(Puntuación máxima)) × 10
 #### **Microsoft Excel:**
 1. Cree una nueva hoja de cálculo
 2. Introduzca los datos en las columnas correspondientes
-3. Guarde como: **"Guardar como" → Tipo: "CSV UTF-8 (delimitado por comas) (*.csv)"**
+3. Guarde como: **"Guardar como" → Tipo: "CSV (delimitado por punto y coma)"**
+4. Verifique que la codificación sea **UTF-8**
 
 #### **Google Sheets:**
 1. Cree una nueva hoja de cálculo
@@ -694,6 +689,11 @@ Nota = (√(Puntuación del alumno) / √(Puntuación máxima)) × 10
 - Visual Studio Code
 - Notepad++
 - Sublime Text
+
+**Configuración recomendada:**
+- Codificación: UTF-8
+- Saltos de línea: LF (Unix) o CRLF (Windows)
+- Sin BOM (Byte Order Mark)
 
 ---
 
@@ -730,7 +730,7 @@ Nota = (√(Puntuación del alumno) / √(Puntuación máxima)) × 10
 - **Ejemplo**: "Entrega de proyecto final"
 
 #### ✒️ Actividad temporal personalizada
-- **Color**: Verde oscuro
+- **Color**: Verde oscuri
 - **Descripción**: Actividad creada de forma rápida y temporal. Se guardará solo durante la sesión actual, pero se mantendrán las insignias asociadas a los alumnos.
 - **Ejemplo**: "Actividad especial del día"
 
@@ -892,7 +892,7 @@ Este sistema es una herramienta educativa diseñada para facilitar la gestión y
 ### 🌟 ¡Gamifica tu aprendizaje y convierte cada logro en una recompensa! 🌟
 
 ---
-**SCANUJA - Sistema de Gamificación Educativa** | Versión 1.0.2
+**SCANUJA - Sistema de Gamificación Educativa** | Versión 1.0
 
 **Elena Sánchez Nájera** - [esnajera@ujaen.es](mailto:esnajera@ujaen.es)
 </div>
