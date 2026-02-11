@@ -53,8 +53,14 @@ Future<void> importarCSVAsignatura(BuildContext context) async {
     inicioCarga(context);
     cargando = true;
 
-    final csvString = utf8.decode(result.files.first.bytes!);
-    final rows = const CsvToListConverter().convert(csvString);
+    List<List<dynamic>> rows;
+
+    try {
+      final csvString = utf8.decode(result.files.first.bytes!);
+      rows = const CsvToListConverter().convert(csvString);
+    } catch (e) {
+      throw 'Compruebe que el fichero tiene codificación CSV UTF-8';
+    }
 
     if (rows.isEmpty) {
       throw 'Se ha importado un fichero vacío.';

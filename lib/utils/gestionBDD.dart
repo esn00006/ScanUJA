@@ -497,6 +497,17 @@ Future<void> eliminarAsignaturaBDD(
       }
     }
 
+    // Eliminar la asignatura de todos los profesores asociados
+    final profesores = List<String>.from(asignatura.data()?['Profesores'] ?? []);
+    for (String profesor in profesores) {
+      await FirebaseFirestore.instance
+          .collection('usuarios')
+          .doc(profesor)
+          .update({
+            'Asignaturas': FieldValue.arrayRemove([idAsignatura]),
+          });
+    }
+
     await FirebaseFirestore.instance
         .collection('asignaturas')
         .doc(idAsignatura)
