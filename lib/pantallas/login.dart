@@ -186,13 +186,25 @@ class _LoginState extends State<Login> {
                         style: TextStyle(color: Colors.grey[600]),
                       ),
                       TextButton(
-                        onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const FormularioRegistroProfesor(),
-                          ),
-                        ),
+                        onPressed: () async {
+                          final resultado = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const FormularioRegistroProfesor(),
+                            ),
+                          );
+
+                          // Si el resultado es true, mostrar mensaje de éxito
+                          if (resultado == true && mounted) {
+                            final scaffoldMessenger = ScaffoldMessenger.of(context);
+                            mostrarMensaje(
+                              scaffoldMessenger,
+                              'Profesor registrado correctamente. Por favor, inicie sesión.',
+                              Colors.green,
+                            );
+                          }
+                        },
                         child: const Text(
                           'Regístrate',
                           style: TextStyle(fontWeight: FontWeight.bold),

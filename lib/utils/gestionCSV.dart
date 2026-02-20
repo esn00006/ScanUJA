@@ -57,7 +57,10 @@ Future<void> importarCSVAsignatura(BuildContext context) async {
 
     try {
       final csvString = utf8.decode(result.files.first.bytes!);
-      rows = const CsvToListConverter().convert(csvString);
+      // Detectar delimitador: si la primera línea contiene ';', es Excel; si no, es Google Sheets
+      final primeraLinea = csvString.split('\n')[0];
+      final delimitador = primeraLinea.contains(';') ? ';' : ',';
+      rows = CsvToListConverter(fieldDelimiter: delimitador).convert(csvString);
     } catch (e) {
       throw 'Compruebe que el fichero tiene codificación CSV UTF-8';
     }
@@ -420,7 +423,10 @@ Future<void> importarCSVNotas(BuildContext context, String idAsignatura) async {
 
     // --------------- Procesamiento del fichero CSV ---------------
     final csvString = utf8.decode(result.files.first.bytes!);
-    final rows = const CsvToListConverter().convert(csvString);
+    // Detectar delimitador: si la primera línea contiene ';', es Excel; si no, es Google Sheets
+    final primeraLinea = csvString.split('\n')[0];
+    final delimitador = primeraLinea.contains(';') ? ';' : ',';
+    final rows = CsvToListConverter(fieldDelimiter: delimitador).convert(csvString);
 
     if (rows.isEmpty || rows.length < 2) {
       throw 'El fichero CSV está vacío o no tiene datos suficientes (debe tener al menos 2 filas)';
@@ -432,19 +438,7 @@ Future<void> importarCSVNotas(BuildContext context, String idAsignatura) async {
     }
 
     // --------------- Procesar primera fila: información de la actividad ---------------
-    final primeraFilaString = rows[0].toString();
-    List<String> primeraFila;
-
-    if (primeraFilaString.contains(';')) {
-      primeraFila = primeraFilaString
-          .replaceAll('[', '')
-          .replaceAll(']', '')
-          .split(';')
-          .map((e) => e.trim())
-          .toList();
-    } else {
-      primeraFila = rows[0].map((e) => e.toString().trim()).toList();
-    }
+    List<String> primeraFila = rows[0].map((e) => e.toString().trim()).toList();
 
     if (primeraFila.isEmpty || primeraFila[0].isEmpty) {
       throw 'La primera fila debe contener la información de la actividad (Tipo Actividad - Nombre Actividad)';
@@ -478,34 +472,20 @@ Future<void> importarCSVNotas(BuildContext context, String idAsignatura) async {
     // --------------- VALIDACIÓN de cada línea del CSV (desde fila 1, la 0 es la cabecera) ---------------
     for (int i = 1; i < rows.length; i++) {
       try {
-        // Detectar el delimitador (Excel usa ';', Google Sheets usa ',')
-        final rowString = rows[i].toString();
-        List<String> fila;
-
-        if (rowString.contains(';')) {
-          // Formato Excel
-          fila = rowString
-              .replaceAll('[', '')
-              .replaceAll(']', '')
-              .split(';')
-              .map((e) => e.trim())
-              .toList();
-        } else {
-          // Formato Google Sheets
-          fila = rows[i].map((e) => e.toString().trim()).toList();
-        }
+        // Usar directamente los elementos de rows ya correctamente divididos por CsvToListConverter
+        final fila = rows[i].map((e) => e.toString().trim()).toList();
 
         // Validar que tenga al menos 2 columnas
-        if (fila.length < 2) {
+        if (fila.isEmpty || fila.length < 2) {
           throw 'Formato incorrecto (email - nota [0,10])';
         }
 
         // Extraer correo y nota
-        final correo = fila[0].trim();
-        final notaString = fila[1].trim();
+        final correo = fila[0];
+        final notaString = fila[1];
 
-        // Validar nota
-        final nota = double.tryParse(notaString);
+        // Validar nota - normalizar coma decimal a punto
+        double? nota = double.tryParse(notaString.replaceAll(',', '.'));
         if (nota == null || nota < 0 || nota > 10) {
           throw 'Nota inválida ($notaString). Debe estar entre 0 y 10';
         }
@@ -518,21 +498,26 @@ Future<void> importarCSVNotas(BuildContext context, String idAsignatura) async {
           throw 'El alumno $usuario no está registrado en la asignatura';
         }
 
+        bool yaAsignado = operacionesPendientes.any((op)=>op['usuario']==usuario);
+        if(yaAsignado) {
+          continue;
+        }
+
         // Determinar qué tipo de insignia asignar según la nota
-        String? tipoInsigniaStr;
+        String tipoInsigniaStr = '';
         int puntuacion = 0;
 
-        if (nota >= 8.0 && nota <= 10.0) {
+        if (nota >= 8 && nota <= 10) {
           tipoInsigniaStr = 'oro';
           puntuacion =
               tipoInsignia.firstWhere((t) => t['id'] == 'oro')['puntuacion']
                   as int;
-        } else if (nota >= 6.0 && nota < 8.0) {
+        } else if (nota >= 6 && nota < 8) {
           tipoInsigniaStr = 'plata';
           puntuacion =
               tipoInsignia.firstWhere((t) => t['id'] == 'plata')['puntuacion']
                   as int;
-        } else if (nota >= 4.0 && nota < 6.0) {
+        } else if (nota >= 4 && nota < 6) {
           tipoInsigniaStr = 'bronce';
           puntuacion =
               tipoInsignia.firstWhere((t) => t['id'] == 'bronce')['puntuacion']
@@ -540,7 +525,7 @@ Future<void> importarCSVNotas(BuildContext context, String idAsignatura) async {
         }
 
         // Si la nota es inferior a 4, no se asigna insignia
-        if (tipoInsigniaStr == null) {
+        if (tipoInsigniaStr == '') {
           continue;
         }
 

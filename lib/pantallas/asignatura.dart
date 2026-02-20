@@ -368,7 +368,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
             Column(
               children: [
                 if (top5.isNotEmpty)
-                  _buildPodiumCircle(top5[0], 1, const Color(0xFFFFD700), 95),
+                  _buildPodiumCircle(top5[0], 1, colorInsignia['oro']!, 95),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -378,7 +378,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                         child: _buildPodiumCircle(
                           top5[1],
                           2,
-                          const Color(0xFFC0C0C0),
+                          colorInsignia['plata']!,
                           80,
                         ),
                       ),
@@ -388,7 +388,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                         child: _buildPodiumCircle(
                           top5[2],
                           3,
-                          const Color(0xFFCD7F32),
+                          colorInsignia['bronce']!,
                           80,
                         ),
                       ),
@@ -511,7 +511,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                           ? '${alumno['usuario'].substring(0, 6)}..'
                           : alumno['usuario'],
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: posicion == 1 ? 13 : 12,
                       ),
@@ -530,12 +530,12 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.star, size: 12, color: Colors.white),
+                          const Icon(Icons.star, size: 12, color: Colors.black),
                           const SizedBox(width: 2),
                           Text(
                             '${alumno['puntuacion']}',
                             style: const TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 11,
                             ),
@@ -548,20 +548,13 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
               ),
             ),
             Positioned(
-              top: -8,
+              top: -15,
               child: Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                   border: Border.all(color: medalColor, width: 2),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.2),
-                      blurRadius: 4,
-                      spreadRadius: 1,
-                    ),
-                  ],
                 ),
                 child: Text(
                   '$posicion',
@@ -1188,7 +1181,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                     ),
                     const SizedBox(width: 12),
                     Text(
-                      'Alumnos',
+                      'Alumnos' + ' (${_alumnosLista.length})',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -1257,7 +1250,7 @@ class _AlumnosAsignaturaState extends State<AlumnosAsignatura> {
                 decoration: InputDecoration(
                   hintText: filtroOrden == 'nombre'
                       ? 'Buscar por nombre...'
-                      : 'Puntuación mínima...',
+                      : 'Buscar por puntuación...',
                   hintStyle: TextStyle(
                     color: Colors.white.withValues(alpha: 0.7),
                     fontSize: 16,

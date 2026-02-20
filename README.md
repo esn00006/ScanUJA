@@ -39,44 +39,44 @@
   - [📖 3. Pantalla de Asignatura](#-3-pantalla-de-asignatura-1)
     - [Elementos de la pantalla](#elementos-de-la-pantalla-2)
   - [📱 4. Escanear Códigos QR](#-4-escanear-códigos-qr)
-    - [Cómo escanear un código QR](#cómo-escanear-un-código-qr)
+    - [Cómo escanear un código QR](#-cómo-escanear-un-código-qr)
     - [Mensajes posibles](#mensajes-posibles)
   - [🔍 5. Pantalla de Perfil (Mi Usuario)](#-5-pantalla-de-perfil-mi-usuario)
     - [Información mostrada](#información-mostrada-2)
     - [Acciones disponibles](#acciones-disponibles-2)
 - [📄 Formato de Archivos CSV](#-formato-de-archivos-csv)
   - [📝 Consideraciones Generales](#-consideraciones-generales)
-  - [1️⃣ Importar Asignatura con Alumnos](#1️⃣-importar-asignatura-con-alumnos)
+  - [1️⃣ Importar Asignatura con Alumnos](#1-importar-asignatura-con-alumnos)
     - [Estructura del archivo](#estructura-del-archivo)
     - [Explicación detallada](#explicación-detallada)
     - [Ejemplo completo (Excel - delimitador `;`)](#ejemplo-completo-excel---delimitador-)
     - [Ejemplo completo (Google Sheets - delimitador `,`)](#ejemplo-completo-google-sheets---delimitador-)
-    - [Errores comunes](#errores-comunes)
-  - [2️⃣ Importar Notas con Asignación Automática de Insignias](#2️⃣-importar-notas-con-asignación-automática-de-insignias)
+    - [Errores comunes](#-errores-comunes)
+  - [2️⃣ Importar Notas con Asignación Automática de Insignias](#2-importar-notas-con-asignación-automática-de-insignias)
     - [Estructura del archivo](#estructura-del-archivo-1)
     - [Explicación detallada](#explicación-detallada-1)
     - [Sistema de asignación automática](#sistema-de-asignación-automática)
     - [Ejemplo completo (Excel - delimitador `;`)](#ejemplo-completo-excel---delimitador--1)
     - [Ejemplo completo (Google Sheets - delimitador `,`)](#ejemplo-completo-google-sheets---delimitador--1)
-    - [Validaciones y Errores](#validaciones-y-errores)
-    - [Seguridad y Validación](#seguridad-y-validación)
-  - [3️⃣ Exportar Notas](#3️⃣-exportar-notas)
+    - [Validaciones y Errores](#-validaciones-y-errores)
+    - [Seguridad y Validación](#-seguridad-y-validación)
+  - [3️⃣ Exportar Notas](#3-exportar-notas)
     - [Estructura del archivo generado](#estructura-del-archivo-generado)
     - [Explicación](#explicación)
     - [Cálculo de la nota](#cálculo-de-la-nota)
     - [Características](#características)
-  - [🛠️ Herramientas Recomendadas para Crear CSV](#️-herramientas-recomendadas-para-crear-csv)
+  - [🛠️ Herramientas Recomendadas para Crear CSV](#-herramientas-recomendadas-para-crear-csv)
     - [Microsoft Excel](#microsoft-excel)
     - [Google Sheets](#google-sheets)
     - [Editores de Texto (Avanzado)](#editores-de-texto-avanzado)
 - [🏆 Sistema de Puntuación e Insignias](#-sistema-de-puntuación-e-insignias)
   - [📊 Tipos de Insignias](#-tipos-de-insignias)
   - [🎯 Tipos de Actividades](#-tipos-de-actividades)
-    - [Ejercicio de Pizarra](#ejercicio-de-pizarra)
-    - [Preguntas en Clase](#preguntas-en-clase)
-    - [Test Platea](#test-platea)
-    - [Ejercicio Evaluable](#ejercicio-evaluable)
-    - [Actividad temporal personalizada](#actividad-temporal-personalizada)
+    - [Ejercicio de Pizarra](#-ejercicio-de-pizarra)
+    - [Preguntas en Clase](#-preguntas-en-clase)
+    - [Test Platea](#-test-platea)
+    - [Ejercicio Evaluable](#-ejercicio-evaluable)
+    - [Actividad temporal personalizada](#-actividad-temporal-personalizada)
   - [📈 Cálculo del Ranking](#-cálculo-del-ranking)
   - [🎓 Estrategias para Alumnos](#-estrategias-para-alumnos)
     - [Maximizar Puntuación](#maximizar-puntuación)
@@ -209,8 +209,8 @@ Al pulsar sobre una asignatura, podrá ver toda su información.
 - Puntuación total
 
   #### **Ordenar Alumnos:**
-  - **Por Nombre**: Aplicar orden en función del nombre de usuario
-  - **Por Puntuación**: Aplicar orden en función de la puntuación obtenida
+  - **Por Nombre**: Aplicar orden en función del nombre de usuario. Permite realizar búsquedas por nombre, apellidos o usuario.
+  - **Por Puntuación**: Aplicar orden en función de la puntuación obtenida. Permite realizar búsquedas en función de la mínima puntuación obtenida.
 
 **⚙️ Menú de Opciones:**
 
@@ -286,7 +286,7 @@ Al pulsar sobre un alumno, podrá acceder a su perfil detallado.
 - **Editar datos**: Permite corregir erratas en el nombre y apellidos
 - **Eliminar alumno**: Borra al alumno de la asignatura. Si fuese su única asignatura, también se eliminaría su cuenta.
 - **Añadir insignia de forma manual**: Registra una nueva insignia en el alumno de forma manual. Es útil para usuarios que no tengan acceso a la aplicación en el momento.
-- **Eliminar insignia**: Puede hacer click en cualquiera de las insignias del listado para eliminarla individualmente. La puntuación se actualizará automáticamente.
+- **Eliminar insignia**: Puede hacer clic en cualquiera de las insignias del listado para eliminarla individualmente. La puntuación se actualizará automáticamente.
 
 ---
 
@@ -330,7 +330,7 @@ Asignatura: 2425-12345678 (Matemáticas I - Curso 2024-25)
 Actividad: Test Platea
 Insignia: Oro (20 puntos)
 ```
-El alumno que escane el código obtendrá la insignia de oro y sumará 20 puntos a su puntuación total. **Cada insignia podrá ser escaneada por un único alumno.**
+El alumno que escanee el código obtendrá la insignia de oro y sumará 20 puntos a su puntuación total. **Cada insignia podrá ser escaneada por un único alumno.**
 
 ---
 
@@ -474,9 +474,9 @@ La siguiente información debe venir incluida en la primera celda:
 ```
 Curso - Código - Nombre de la Asignatura
 ```
-- **Curso**: Año académico (ej: `2425` para 2024-25)
-- **Código**: Código único de la asignatura (ej: `12345678`)
-- **Nombre**: Nombre descriptivo (ej: `Matemáticas I`)
+- **Curso**: Año académico (ej. `2425` para 2024-25)
+- **Código**: Código único de la asignatura (ej. `12345678`)
+- **Nombre**: Nombre descriptivo (ej. `Matemáticas I`)
 
 **Ejemplo completo:**
 ```
@@ -499,7 +499,7 @@ Debe incluir los datos omitiendo la primera columna, es decir, **comenzando desd
 | **Correo**    | Email institucional completo | `garcia.lopez@red.ujaen.es` | ✅ Sí        |
 
 #### **Ejemplo completo (Excel - delimitador `;`):**
-![img.png](img.png)
+![img.png](docs/img.png)
 ```
 2425 - 12345678 - Matemáticas I
     DNI;Apellido1;Apellido2;Nombre;Correo
@@ -509,10 +509,10 @@ Debe incluir los datos omitiendo la primera columna, es decir, **comenzando desd
 ```
 
 **⚠️ Formato del archivo:** Recuerde que la aplicación utiliza archivos CSV con codificación UTF-8. Guarde los ficheros con dicho formato para evitar problemas de lectura.
-![img_3.png](img_3.png)
+![img_3.png](docs/img_3.png)
 
 #### **Ejemplo completo (Google Sheets - delimitador `,`):**
-![img_1.png](img_1.png)
+![img_1.png](docs/img_1.png)
 ```
 2425 - 12345678 - Matemáticas I
     DNI,Apellido1,Apellido2,Correo
@@ -541,6 +541,7 @@ Debe incluir los datos omitiendo la primera columna, es decir, **comenzando desd
 
 Este formato permite importar las notas de una actividad específica y asignar automáticamente las insignias correspondientes.
 
+> ⚠️ Si un alumno participa varias veces en una misma actividad, solo se contará el primer intento para la asignación automática de la medalla correspondiente.
 #### **Estructura del archivo:**
 
 ```csv
@@ -560,7 +561,7 @@ Tipo Actividad - Nombre Actividad
   - `Preguntas en clase`
   - `Test platea`
   - `Ejercicio evaluable`
-- **Nombre Actividad**: Nombre descriptivo de la actividad (ej: `Derivadas Parciales`)
+- **Nombre Actividad**: Nombre descriptivo de la actividad (ej. `Derivadas Parciales`)
 
 El tipo de actividad y nombre deben ser únicos para cada fichero importado dentro de la misma asignatura. Si se importan dos ficheros con el mismo tipo y nombre de actividad se considerarán repetidos y no se procesará toda la información.
 
@@ -579,6 +580,8 @@ El tipo de actividad y nombre deben ser únicos para cada fichero importado dent
 | **6.0 - 7.9**  | 🥈 Plata     | 10 puntos |
 | **4.0 - 5.9**  | 🥉 Bronce    | 5 puntos  |
 | **0.0 - 3.9**  | Sin insignia | 0 puntos  |
+
+> Los decimales pueden introducirse con '.' o ',' indistintamente.
 
 #### **Ejemplo completo (Excel - delimitador `;`):**
 
@@ -784,7 +787,7 @@ El sistema detectará que el alumno ya está registrado y lo omitirá, mostrando
 No directamente. Debe eliminar la insignia del alumno y asignar una nueva. Esto se hace desde el perfil del alumno o mediante un nuevo CSV de notas con una actividad diferente.
 
 #### **¿Cómo elimino una insignia específica de un alumno?**
-Para eliminar una insignia específica, debe acceder al perfil del alumno (dentro del listado de la asignatura), hacer click en la insignia que desea eliminar y confirmar la acción.
+Para eliminar una insignia específica, debe acceder al perfil del alumno (dentro del listado de la asignatura), hacer clic en la insignia que desea eliminar y confirmar la acción.
 
 #### **¿Puedo cambiar el nombre de una asignatura después de crearla?**
 No, el nombre de la asignatura se establece en la importación inicial. Si necesita cambiarlo, debe crear una nueva asignatura.
@@ -800,7 +803,7 @@ No, el sistema detecta si un alumno ya tiene una insignia de esa actividad espec
 ### 👨‍🎓 Para Alumnos
 
 #### **¿Puedo obtener la misma insignia varias veces?**
-No, cada insignia por actividad solo se puede obtener una vez. Sin embargo, puede obtener diferentes insignias del mismo tipo (ej: varias insignias de Oro de diferentes actividades).
+No, cada insignia por actividad solo se puede obtener una vez. Sin embargo, puede obtener diferentes insignias del mismo tipo (ej. varias insignias de Oro de diferentes actividades).
 
 #### **¿Cómo sé en qué posición estoy del ranking?**
 Su posición se muestra claramente en la pantalla de la asignatura, indicando su puesto actual y el total de puntos acumulados.
@@ -809,7 +812,7 @@ Su posición se muestra claramente en la pantalla de la asignatura, indicando su
 No, solamente la puntuación total de los compañeros en el Top 5. Las insignias son privadas para cada alumno.
 
 #### **¿Pierdo puntos si me equivoco en una actividad?**
-No, el sistema no penaliza con puntos negativos. Simplemente no recibirá insignia si la nota es inferior a 4.0 en actividades seleccionadas.
+No, el sistema no penaliza con puntos negativos. Simplemente, no recibirá insignia si la nota es inferior a 4.0 en actividades seleccionadas.
 
 #### **¿Las insignias obtenidas en una asignatura cuentan para otras?**
 No, cada asignatura tiene su propio sistema de puntuación e insignias independiente.
@@ -892,7 +895,7 @@ Este sistema es una herramienta educativa diseñada para facilitar la gestión y
 ### 🌟 ¡Gamifica tu aprendizaje y convierte cada logro en una recompensa! 🌟
 
 ---
-**SCANUJA - Sistema de Gamificación Educativa** | Versión 1.0.2
+**SCANUJA - Sistema de Gamificación Educativa** | Versión 1.0.3
 
 **Elena Sánchez Nájera** - [esnajera@ujaen.es](mailto:esnajera@ujaen.es)
 </div>

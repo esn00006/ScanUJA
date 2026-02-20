@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sistema_gamificacion/pantallas/widgets.dart';
 import 'package:sistema_gamificacion/utils/gestionBDD.dart';
 
 class FormularioRegistroProfesor extends StatefulWidget {
@@ -141,8 +140,6 @@ class _FormularioRegistroProfesorState
                         ElevatedButton.icon(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              final scaffoldMessenger = ScaffoldMessenger.of(context);
-
                               String correo = correoController.text.trim();
                               String usuario = correo.split('@')[0];
 
@@ -169,11 +166,10 @@ class _FormularioRegistroProfesorState
                                 registrarUsuarioAuth(correo, dni);
                               }
 
-                              mostrarMensaje(
-                                scaffoldMessenger,
-                                'Se ha registrado al usuario $usuario correctamente',
-                                Colors.green,
-                              );
+                              // Volver a la pantalla de login retornando true
+                              if (mounted) {
+                                Navigator.pop(context, true);
+                              }
                             }
                           },
                           icon: const Icon(
